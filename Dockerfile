@@ -4,6 +4,7 @@ FROM python:3.9-slim
 RUN apt-get update && apt-get install -y \
     python3-tk \
     xvfb \
+    x11-utils \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -13,6 +14,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-# Start Xvfb and run the application
+# Set the DISPLAY environment variable
 ENV DISPLAY=:99
-CMD ["sh", "-c", "Xvfb :99 -screen 0 1024x768x16 & python chore_tracker.py"]
+
+# Start Xvfb
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1024x768x16 & exec python chore_tracker.py"]
