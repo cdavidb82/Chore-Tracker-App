@@ -11,6 +11,11 @@ class ChoreTracker:
         self.CHORE_LIST = ["Clean Room", "Do Laundry", "Load Dishwasher", "Vacuum"]
         self.completed_chore_list = []
 
+        # Initialize database connection and cursor
+        self.conn = sqlite3.connect('chore_tracker.db')
+        self.cursor = self.conn.cursor()
+        self.setup_database()
+
         # Create GUI components
         self.chore_label = tk.Label(root, text="Select a Chore:")
         self.chore_label.pack()
@@ -28,18 +33,12 @@ class ChoreTracker:
         self.progress_listbox.pack()
 
     def setup_database(self):
-        
-        # Create a connection object
-        conn = sqlite3.connect('chore_tracker.db')
-        # Create a cursor object
-        c = conn.cursor()
-        # Create a table
-        c.execute('''CREATE TABLE chores
+        # Create tables
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS chores
                     (chore text)''')
-        # Commit the changes
-        conn.commit()
-        # Close the connection
-        conn.close() 
+        self.cursor.execute('''CREATE TABLE IF NOT EXISTS completed_chores
+                    (chore text, timestamp text)''')
+        self.conn.commit()
 
     def update_progress_text(self):
         self.progress_listbox.delete(0, tk.END)
@@ -54,8 +53,8 @@ class ChoreTracker:
             self.chore_combo['values'] = self.CHORE_LIST
             self.chore_combo.set("")
             self.update_progress_text()
-        new_chore = self.completed_chore_list[-1]
-
+        if selected_chore:
+            self.record_completion(selected_chore)
     def record_completion(self, chore):
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self.cursor.execute('''
