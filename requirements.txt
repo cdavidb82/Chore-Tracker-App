@@ -1,1 +1,4 @@
-tk
+tk==0.1.0
+flake8==3.2.0
+pytest==7.0.0
+# Add other dependencies here
