@@ -1,8 +1,8 @@
 # Imports
 import tkinter as tk
 import sqlite3
-from tkinter import ttk
 from datetime import datetime
+from tkinter import ttk
 
 class ChoreTracker:
     def __init__(self, root):
