@@ -17,7 +17,3 @@
 
 - Bug fixes for chore completion status.
 - Resolved issues with user login.
-
-## [1.0.0] - 2023-10-01
-
-- Initial release of the Chore Tracker App.

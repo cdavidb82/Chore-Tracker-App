@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Database file created from application
+chore_tracker.db
+
 # Github extensions
 .github/
 
