@@ -23,15 +23,13 @@ A simple GUI application designed to help children track their chores and view t
 ## Requirements
 
 - Python 3.8 or higher
-- Tkinter library for GUI (included with Python's standard library for most distributions)
-- Pillow library for image handling
 
 ## Installation
 
 To install the required libraries, run the following command:
 
-```bash
-pip install tkinter pillow
+```
+python3 -m pip install -r requirements.txt
 ```
 
 ## Usage
@@ -39,5 +37,6 @@ pip install tkinter pillow
 To run the application, navigate to the directory containing `chore_tracker.py` and execute the following command:
 
 ```bash
-python chore_tracker.py
+python 3chore_tracker.py
 ```
+
