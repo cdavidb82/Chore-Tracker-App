@@ -37,6 +37,6 @@ python3 -m pip install -r requirements.txt
 To run the application, navigate to the directory containing `chore_tracker.py` and execute the following command:
 
 ```bash
-python 3chore_tracker.py
+python chore_tracker.py
 ```
 
